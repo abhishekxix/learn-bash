@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Functions in bash are like mini programs
+# Functions also have exit codes.
+greet() {
+  # This is global
+  # name=$1
+
+  # This is local
+  local name=$1
+  echo "hello $name"
+
+  # manually returning
+  return 0
+}
+
+for name in "$@"; do
+  # Calling another program from this program.
+  # ./hello "$name"
+
+  # Calling a function instead
+  greet "$name" >>file.txt
+done
+
+var=$(greet abhishek)
+echo "var is $var with $? code"

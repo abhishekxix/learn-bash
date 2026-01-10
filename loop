@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# for loops in bash are for-in loops essentially.
+
+# for thing in foo bar baz bat; do
+#   echo "thing is $thing"
+# done
+
+# for thing in "$1" "$2" "$3"; do
+#   echo "thing is $thing"
+# done
+
+# "$@" is all command line arguments as separate words (array)
+# "$*" is all command line arguments as a single word
+# "$@" is almost always what you want in a for loop
+# "$*" is almost never what you want in a for loop
+for thing in "$@"; do
+  echo "thing is $thing"
+done

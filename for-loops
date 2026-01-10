@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+for thing in {a..f}; do
+  echo "thing is $thing"
+done
+
+for thing in {1..5}; do
+  echo "thing is $thing"
+done
+
+max=5
+# # Bash does not support varaible expansion in brace expansion.
+# for thing in {1.."$max"}; do
+#   echo "thing is $thing"
+# done
+#
+# This will print `thing is {1..5}` instead of iterating from 1 to 5.
+
+# To achieve the same effect, use C-style for loop:
+for ((thing = 1; thing <= max; thing++)); do
+  echo "thing is $thing"
+done

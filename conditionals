@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+a=2
+b=2
+
+if [[ $a == $b ]]; then
+  echo "a and b are the same" # double quotes allow for variable expansion.
+  # single quotes do not allow for variable expansion inside them.
+fi
+
+c=2
+d=3
+
+if [[ $c != $d ]]; then
+  # if ! [[ $c != $d ]]; then does the same thing.
+  echo "c and d are NOT the same"
+fi
+
+# To know more, run `help test`.
+if [[ -f file.txt ]]; then
+  echo 'file.txt exists and is a file.'
+fi
+
+# while [[ -f file.txt ]]; do
+#   echo 'file.txt exists and is a file'
+#   sleep 1
+# done
+
+# Bash also has an until loop which is the opposite test of the while loop.
+
+# Conditional statemens do not only need [[ ]] next to them,
+# they can also evaluate anything that has a value.
+# for e.g.
+# if command; then
+#   ...
+# fi
+
+if true; then
+  echo "This will always run."
+fi
+
+if false; then
+  echo "This will never run."
+fi
+
+# true and false are comands that return exit status 0 and 1 respectively.
+#
+# [[]] do not need to be inside of if/while/until statements.
+# They can be used anywhere a command can be used.
+# For e.g.
+[[ -f file.txt ]] && echo "file.txt exists and is a file."
+
+# We can also use [] or test command for conditionals if we are writing POSIX compliant scripts.
+# But, they have less features than [[ ]] and are more error-prone.
+# For e.g.
+# if [ "$a" -eq "$b" ]; then
+#  echo "a and b are the same"
+#  fi
+#  Note the spaces after [ and before ] are mandatory.
+#  Also, we need to use -eq for numeric comparison instead of ==.
+#  So, it is recommended to use [[ ]] in bash scripts.
+#  To know more, run `help test` or `man test`.
+#
+#  Overall, [[]] will give you less problems.

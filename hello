@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# read -rp 'Enter your name: ' name
+
+# the syntax of if in bash is
+# if .....; then
+#   ....
+# fi
+
+if [[ -n $1 ]]; then
+  name=$1
+else
+  read -rp 'Enter your name: ' name
+fi
+
+# Or get name from command line argument
+name=$1
+
+echo "hello $name"
