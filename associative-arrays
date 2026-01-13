@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Defensive programming: Check if associative arrays are supported for very very old systems.
+# if ! declare -A test_assoc_array; then
+#   echo "Your bash version does not support associative arrays." >&2
+#   exit 1
+# fi
+
+declare -A my_assoc_array # Declare an associative array. This step is mandatory.
+echo "$?"                 # Check if the declaration was successful. Should print 0.
+
+my_assoc_array[name]="Abhishek"
+my_assoc_array[occupation]="Developer"
+my_assoc_array[location]="Earth"
+my_assoc_array["favorite cuisine"]="Indian"
+
+echo "Name: ${my_assoc_array[name]}"
+echo "Occupation: ${my_assoc_array[occupation]}"
+echo "Location: ${my_assoc_array[location]}"
+echo "Favorite Cuisine: ${my_assoc_array["favorite cuisine"]}"
+echo "Invalid key indexing will give an empty string: ${my_assoc_array["some bad key"]}"
+
+# ${my_assoc_array[@]} or ${my_assoc_array[*]} gives all values in the associative array.
+# ${!my_assoc_array[@]} or ${!my_assoc_array[*]} gives all keys in the associative array.
+# Looping over keys and values.
+echo "Looping over keys and values:"
+for key in "${!my_assoc_array[@]}"; do
+  echo "Key: $key, Value: ${my_assoc_array[$key]}"
+done
+
+declare -A person=(
+  [first_name]="John"
+  [last_name]="Doe"
+  [age]="30"
+)
+echo "Person details:"
+for key in "${!person[@]}"; do
+  echo "Key: $key, Value: ${person[$key]}"
+done
