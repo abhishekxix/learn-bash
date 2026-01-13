@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+s=$1
+
+# This is a case statement.
+# It is similar to switch-case in other languages.
+# It is used for pattern matching.
+# Each pattern is followed by a right parenthesis.
+# The commands to be executed for that pattern are listed after that.
+# The pattern matching is done using globbing.
+# The case statement is terminated by 'esac' (case spelled backwards).
+case "$s" in
+abhishek)
+  echo "hello abhishek!"
+  # ;; is used to terminate each pattern block.
+  ;;
+buddy)
+  echo "hello buddy!"
+  ;;
+guy)
+  echo "hello guy!"
+  ;;
+*)
+  echo "goodbye $s!"
+  ;;
+esac
