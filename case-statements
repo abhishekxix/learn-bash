@@ -22,7 +22,9 @@ guy)
   ;;
 a* | b*)
   echo "hello with a* and b* $s!"
-  ;;
+  # ;& is used to fall through to the next pattern block regardless of whether it matches or not.
+  # ;;& is used to fall through to the next pattern block and continue matching.
+  ;&
 *)
   echo "goodbye $s!"
   ;;
