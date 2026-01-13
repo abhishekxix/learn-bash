@@ -20,6 +20,9 @@ buddy)
 guy)
   echo "hello guy!"
   ;;
+a* | b*)
+  echo "hello with a* and b* $s!"
+  ;;
 *)
   echo "goodbye $s!"
   ;;
