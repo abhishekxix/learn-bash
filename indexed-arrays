@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# Indexed arrays in bash.
+declare -a my_array # this step is optional
+my_array=(
+  foo
+  bar
+  baz
+  'hey there friend'
+)
+
+# Expanding array without an index only gives the first element.
+echo "$my_array"
+
+# This prints the second element of the array.
+echo "0: ${my_array[0]}"
+echo "1: ${my_array[1]}"
+echo "2: ${my_array[2]}"
+
+# Negative indexing.
+echo "-1: ${my_array[-1]}"
+echo "-2: ${my_array[-2]}"
+echo "-3: ${my_array[-3]}"
+
+idx=1
+# It is not necessary to write it as ${my_array[$idx]} when working with numeric indices.
+echo "Using variable index ${idx}: ${my_array[idx]}"
+
+echo "*: ${my_array[*]}" # prints all elements as a single word essentially stringifying the array.
+echo "@: ${my_array[@]}" # prints all elements as separate words.
+
+echo "looping over array[*]"
+for item in "${my_array[*]}"; do
+  echo "$item"
+done
+
+echo "looping over array[@]"
+for item in "${my_array[@]}"; do
+  echo "$item"
+done
+
+# Get the length of the array.
+# ${#array_name[@]} or ${#array_name[*]} gives the number of elements in the array.
+echo "Length of array: ${#my_array[@]}"
+
+# Get the length of a specific element.
+echo "Length of element 3: ${#my_array[3]}"
+
+# Creating a new array from another array.
+copy_array=("${my_array[@]}" something_else)
+echo "Copy array elements:"
+for item in "${copy_array[@]}"; do
+  echo "$item"
+done
+
+# += operator to append elements to an array.
+copy_array+=("additional_element")
+
+echo "After appending, copy array elements:"
+for item in "${copy_array[@]}"; do
+  echo "$item"
+done
+
+# Display the declarations of the arrays.
+declare -p my_array
+declare -p copy_array
